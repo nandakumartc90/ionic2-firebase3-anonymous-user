@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
-import { HomePage } from './pages/home/home';
 import { LandingPage } from './pages/landing/landing';
 import { AnonymousListPage } from './pages/anonymous-list/anonymous-list';
 
@@ -27,12 +26,9 @@ export class MyApp {
       if (!user) {
         this.rootPage = LandingPage;
         unsubscribe();
-      } else if (user.isAnonymous == true) {
+      } else {
         unsubscribe();
         this.rootPage = AnonymousListPage;
-      } else if (user.isAnonymous == false) {
-        unsubscribe();
-        this.rootPage = HomePage;
       }
     });
 

@@ -11,6 +11,10 @@ export class AuthData {
     this.userProfile = firebase.database().ref('/userProfile');
   }
 
+  getUser(){
+    return this.fireAuth.currentUser;
+  }
+
   loginUser(email: string, password: string): any {
     return this.fireAuth.signInWithEmailAndPassword(email, password);
   }
@@ -28,14 +32,6 @@ export class AuthData {
     }, (error) => {
       console.log("Account linking error", error);
     });
-  }
-
-  resetPassword(email): any {
-    return this.fireAuth.sendPasswordResetEmail(email);
-  }
-
-  logoutUser(): any {
-    return this.fireAuth.signOut();
   }
 
 }
