@@ -1,11 +1,11 @@
 import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { AuthData } from '../../providers/auth-data/auth-data';
+import { AuthData } from '../../providers/auth-data';
 import { AnonymousListPage } from '../anonymous-list/anonymous-list';
 
 @Component({
-  templateUrl: 'build/pages/signup/signup.html',
-  providers: [AuthData]
+  selector: 'page-signup',
+  templateUrl: 'signup.html',
 })
 export class SignupPage {
   public email: string;

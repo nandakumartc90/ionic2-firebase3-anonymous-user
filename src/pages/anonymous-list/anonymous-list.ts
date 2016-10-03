@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
-import { HomeDetailPage } from '../home-detail/home-detail';
+import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
-import { AuthData } from '../../providers/auth-data/auth-data';
+import { AuthData } from '../../providers/auth-data';
 
 @Component({
-  templateUrl: 'build/pages/anonymous-list/anonymous-list.html',
-  providers: [AuthData]
+  selector: 'page-anonymous-list',
+  templateUrl: 'anonymous-list.html',
 })
 export class AnonymousListPage {
   public apartments: number[];
-  constructor(private navCtrl: NavController, public authData: AuthData, public alertCtrl: AlertController) {
-    this.apartments = [1, 2, 3, 4, 5];
+  constructor(public navCtrl: NavController, public authData: AuthData, 
+    public alertCtrl: AlertController) {
+      this.apartments = [1, 2, 3, 4, 5];
   }
 
   goToDetail(){
@@ -30,7 +31,7 @@ export class AnonymousListPage {
       });
       alert.present();
     } else {
-      this.navCtrl.push(HomeDetailPage);
+      this.navCtrl.push(HomePage);
     }
   }
 
