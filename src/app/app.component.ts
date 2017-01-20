@@ -28,12 +28,14 @@ export class MyApp {
 
     firebase.initializeApp(firebaseConfig);
 
-    firebase.auth().onAuthStateChanged(user => {
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       this.zone.run( () => {
         if (user) {
           this.rootPage = AnonymousListPage;
+          unsubscribe();
         } else {
           this.rootPage = LandingPage;
+          unsubscribe();
         }
       });
     });
