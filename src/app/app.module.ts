@@ -34,7 +34,7 @@ import { AuthData } from '../providers/auth-data';
     HomePage
   ],
   providers: [
-    [{provide: ErrorHandler, useClass: IonicErrorHandler}],
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthData
   ]
 })
