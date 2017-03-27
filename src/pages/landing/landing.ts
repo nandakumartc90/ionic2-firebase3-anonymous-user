@@ -12,11 +12,11 @@ export class LandingPage {
 
   constructor(public navCtrl: NavController, public authData: AuthData) {}
 
-  goToLogin(){
+  goToLogin(): void {
     this.navCtrl.push(LoginPage);
   }
 
-  goToList(){
+  goToList(): void {
     this.authData.createAnonymousUser().then( () => {
       this.navCtrl.setRoot(AnonymousListPage);
     });

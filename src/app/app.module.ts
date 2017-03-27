@@ -12,6 +12,9 @@ import { SignupPage } from '../pages/signup/signup';
 // Import the providers
 import { AuthData } from '../providers/auth-data';
 
+import { StatusBar } from '@ionic-native/status-bar';
+import { Splashscreen } from '@ionic-native/splash-screen';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -35,7 +38,9 @@ import { AuthData } from '../providers/auth-data';
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthData
+    AuthData,
+    StatusBar,
+    Splashscreen
   ]
 })
 export class AppModule {}
