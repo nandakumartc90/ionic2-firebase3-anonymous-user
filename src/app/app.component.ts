@@ -3,16 +3,13 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { LandingPage } from '../pages/landing/landing';
-import { AnonymousListPage } from '../pages/anonymous-list/anonymous-list';
-
 import firebase from 'firebase';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage: any;
+  rootPage: string;
   zone: NgZone;
 
   constructor(platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen) {
@@ -30,10 +27,10 @@ export class MyApp {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       this.zone.run( () => {
         if (user) {
-          this.rootPage = AnonymousListPage;
+          this.rootPage = 'AnonymousListPage';
           unsubscribe();
         } else {
-          this.rootPage = LandingPage;
+          this.rootPage = 'LandingPage';
           unsubscribe();
         }
       });
