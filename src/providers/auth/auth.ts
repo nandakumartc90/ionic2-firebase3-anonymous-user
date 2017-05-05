@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import firebase from 'firebase';
 
 @Injectable()
-export class AuthData {
+export class AuthProvider {
   public fireAuth: firebase.auth.Auth;
   public userProfile: firebase.database.Reference;
 

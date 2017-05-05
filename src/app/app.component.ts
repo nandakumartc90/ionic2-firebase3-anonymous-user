@@ -1,7 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Splashscreen } from '@ionic-native/splash-screen';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LandingPage } from '../pages/landing/landing';
 import { AnonymousListPage } from '../pages/anonymous-list/anonymous-list';

@@ -1,24 +1,23 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
-import { AnonymousListPage } from '../anonymous-list/anonymous-list';
-import { AuthData } from '../../providers/auth-data';
+import { IonicPage, NavController } from 'ionic-angular';
+import { AuthProvider } from '../../providers/auth/auth';
 
+@IonicPage()
 @Component({
   selector: 'page-landing',
   templateUrl: 'landing.html',
 })
 export class LandingPage {
 
-  constructor(public navCtrl: NavController, public authData: AuthData) {}
+  constructor(public navCtrl: NavController, public authProvider: AuthProvider) {}
 
   goToLogin(): void {
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push('LoginPage');
   }
 
   goToList(): void {
-    this.authData.createAnonymousUser().then( () => {
-      this.navCtrl.setRoot(AnonymousListPage);
+    this.authProvider.createAnonymousUser().then( () => {
+      this.navCtrl.setRoot('AnonymousListPage');
     });
   }
 
