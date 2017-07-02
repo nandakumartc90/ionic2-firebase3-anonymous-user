@@ -5,14 +5,18 @@ import firebase from 'firebase';
 export class AuthProvider {
   public fireAuth: firebase.auth.Auth;
   public userProfile: firebase.database.Reference;
+  public currentUser: firebase.User;
 
   constructor() {
-    this.fireAuth = firebase.auth();
     this.userProfile = firebase.database().ref('/userProfile');
+    this.fireAuth = firebase.auth();
+    firebase.auth().onAuthStateChanged(user => {
+      this.currentUser = user;
+    });
   }
 
   getUser(): firebase.User {
-    return this.fireAuth.currentUser;
+    return this.currentUser;
   }
 
   loginUser(email: string, password: string): firebase.Promise<any> {
@@ -25,7 +29,7 @@ export class AuthProvider {
 
   linkAccount(email, password): firebase.Promise<any> {
     var credential = (<any> firebase.auth.EmailAuthProvider).credential(email, password);
-    return this.fireAuth.currentUser.link(credential).then( (user) => {
+    return this.currentUser.link(credential).then( (user) => {
       this.userProfile.child(user.uid).update({
         email: email,
       });
